@@ -47,7 +47,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [ ] third page choose type of questions (Any type, one correct answer, multiple correct answers)
   * [ ] radiobuttons with type of questions
   * [ ] read from state [id, questionType]
-* [ ] generate the url to the [https://opentdb.com/](Trivia database) from the answers
+* [ ] generate the url to the [Trivia database](https://opentdb.com/) from the answers
   * [ ] global url variable
 * [ ] start of the game
   * [ ] get all question from url and generate it
