@@ -1,6 +1,8 @@
 # quiz_app
 Practice and test your knowledge by answering questions in a quiz application.
 
+App is using question from [Free to use, user-contributed trivia question database.](https://opentdb.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -37,7 +39,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
     * [ ] get the user from localStorage and show it's name in the header
     * [ ] if user exists show its highest score in the header
     * [ ] send user to the first page
-* [ ] first page choose category (books, films, music, video games, science & nature, computers, mathematics, sports, geography, history, art, animals, All categories)
+    * [ ] after entering the name give the user token [https://opentdb.com/api_token.php?command=request](https://opentdb.com/api_token.php?command=request) - expires after 6 hours of inactivity
+* [ ] first page choose category
+  * [ ] get categories from [https://opentdb.com/api_category.php](https://opentdb.com/api_category.php)
   * [ ] tiles with the names of category
     * [ ] get tiles from state [ id, categoryName ]
   * [ ] on tile click will send to the second page
@@ -71,3 +75,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * add scss compiler
 * add some base styling
 * add props checker 
+
+## API request
+https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=boolean - example
+* amount=10 - amount of questions to get
+* category=20 - trivia_category - {9, 32} , any category - ''  or 'any'
+* difficulty=easy - trivia_difficulty {any, easy, medium, hard} (any or '')
+* type=boolean - trivia_type {any, multiple, boolean} (any or '')
