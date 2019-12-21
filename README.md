@@ -72,7 +72,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 # Reminder
 * connect material ui and axios
 * read about react router
-* add scss compiler
 * add some base styling
 * add props checker 
 

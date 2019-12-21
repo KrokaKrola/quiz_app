@@ -1,0 +1,15 @@
+body {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1180px;
+  padding: 0 20px;
+  width: 100%;
+  margin: auto;
+}
+
+main {
+  height: calc(100vh - 72px);
+  padding-top: 100px;
+}
