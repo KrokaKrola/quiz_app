@@ -35,11 +35,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 # Todo
 * [ ] start, enter name
-  * [ ] store [name, id] in localStorage
-    * [ ] get the user from localStorage and show it's name in the header
-    * [ ] if user exists show its highest score in the header
-    * [ ] send user to the first page
-    * [ ] after entering the name give the user token [https://opentdb.com/api_token.php?command=request](https://opentdb.com/api_token.php?command=request) - expires after 6 hours of inactivity
+  * [x] store [name, id] in localStorage
+    * [x] get the user from localStorage and show it's name in the header
+    * [x] if user exists show its highest score in the header
+    * [x] send user to the first page
+    * [x] after entering the name give the user token [https://opentdb.com/api_token.php?command=request](https://opentdb.com/api_token.php?command=request) - expires after 6 hours of inactivity
 * [ ] first page choose category
   * [ ] get categories from [https://opentdb.com/api_category.php](https://opentdb.com/api_category.php)
   * [ ] tiles with the names of category
