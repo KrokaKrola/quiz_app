@@ -70,9 +70,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   * [ ] button with redirect to the categories page
 
 # Reminder
-* connect material ui and axios
+* axios
 * read about react router
-* add some base styling
 * add props checker 
 
 ## API request

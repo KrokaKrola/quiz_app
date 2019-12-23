@@ -41,21 +41,26 @@ const Register = ({handleSubmit, handlePageChange}) => {
         <>
             <form className="Register" onSubmit={async (e) => {
                 e.preventDefault();
-                /*TODO
-                * Need refactor
-                * */
+                /* TODO
+                *  need A BIG REFACTOR
+                */
                 let user = {};
                 const existedUser = await getUser(userName);
-                if(existedUser) {
+                if (existedUser) {
                     user = {
                         ...existedUser
+                    }
+                    if (user.tokenExpireDate > new Date().getTime()) {
+                        user.token = await getUserToken();
+                        user.tokenExpireDate = new Date().getTime() + 21600000;
                     }
                 } else {
                     user = {
                         id: uniqueId(),
                         name: userName,
                         topScore: 0,
-                        token: await getUserToken()
+                        token: await getUserToken(),
+                        tokenExpireDate: new Date().getTime() + 21600000 // 6 hours in milliseconds
                     }
                     await setUser(user);
                 }
@@ -65,7 +70,7 @@ const Register = ({handleSubmit, handlePageChange}) => {
                 <TextField required label="Enter your name" value={userName} onChange={(e) => {
                     setUserName(e.target.value)
                 }}/>
-                <Button variant="contained" color="primary" type="submit">Register and choose intrested
+                <Button variant="contained" color="primary" type="submit">Register and choose interested
                     category</Button>
             </form>
         </>
