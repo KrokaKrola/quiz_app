@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import {uniqueId} from "./../vendor";
 
-async function getUserToken() {
+const getUserToken = async () => {
     try {
         let result = await fetch(`https://opentdb.com/api_token.php?command=request`);
         const generatedTokenObject = await result.json();
@@ -15,25 +15,31 @@ async function getUserToken() {
     } catch (e) {
         console.log(e.message);
     }
-}
+};
 
-async function getUsers() {
-    let result = await localStorage.getItem('users');
+const getUsers = () => {
+    let result = localStorage.getItem('users');
     return JSON.parse(result) || [];
-}
+};
 
-async function getUser(name) {
-    const users = await getUsers();
+const getUser = name => {
+    const users = getUsers();
     return users.find((user) => {
         return user.name === name ? user : false;
     });
-}
+};
 
-async function setUser(user) {
-    const users = await getUsers();
+const setUser = user => {
+    const users = getUsers();
     const newUsers = [...users, user];
-    await localStorage.setItem('users', JSON.stringify(newUsers));
-}
+    localStorage.setItem('users', JSON.stringify(newUsers));
+};
+
+const refreshUserToken = async user => {
+    console.log('token refreshed');
+    user.token = await getUserToken();
+    user.tokenExpireDate = new Date().getTime() + 21600000;
+};
 
 const Register = ({handleSubmit, handlePageChange}) => {
     const [userName, setUserName] = useState('');
@@ -41,18 +47,11 @@ const Register = ({handleSubmit, handlePageChange}) => {
         <>
             <form className="Register" onSubmit={async (e) => {
                 e.preventDefault();
-                /* TODO
-                *  need A BIG REFACTOR
-                */
                 let user = {};
-                const existedUser = await getUser(userName);
+                const existedUser = getUser(userName);
                 if (existedUser) {
                     user = {
                         ...existedUser
-                    }
-                    if (user.tokenExpireDate > new Date().getTime()) {
-                        user.token = await getUserToken();
-                        user.tokenExpireDate = new Date().getTime() + 21600000;
                     }
                 } else {
                     user = {
@@ -60,9 +59,12 @@ const Register = ({handleSubmit, handlePageChange}) => {
                         name: userName,
                         topScore: 0,
                         token: await getUserToken(),
-                        tokenExpireDate: new Date().getTime() + 21600000 // 6 hours in milliseconds
-                    }
-                    await setUser(user);
+                        tokenExpireDate: new Date().getTime() + 21600000
+                    };
+                    setUser(user);
+                }
+                if (new Date().getTime() > user.tokenExpireDate) {
+                    await refreshUserToken(user);
                 }
                 handleSubmit(user);
                 handlePageChange('Categories');
