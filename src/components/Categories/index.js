@@ -34,7 +34,8 @@ const Categories = ({handlePageChange}) => {
                 {
                     triviaCategories.map(category => (
                         <div key={category.id} className="Categories__item" onClick={() => {
-                            handlePageChange('Difficulty')
+                            handlePageChange('Difficulty');
+                            localStorage.setItem('category', category.id);
                         }}>
                             <span>{category.name}</span>
                         </div>

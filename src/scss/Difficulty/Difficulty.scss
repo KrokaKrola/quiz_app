@@ -1,0 +1,31 @@
+.Difficulty {
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: 23%;
+    margin-right: 2%;
+    height: 200px;
+    background-color: #009fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

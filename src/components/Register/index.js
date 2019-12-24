@@ -47,6 +47,11 @@ const Register = ({handleSubmit, handlePageChange}) => {
         <>
             <form className="Register" onSubmit={async (e) => {
                 e.preventDefault();
+                /* TODO:
+                * 1. use https://opentdb.com/api_token.php?command=reset&token=YOURTOKENHERE if user exists
+                * 2. refresh token dont work correctly
+                * 3. refactor code
+                * */
                 let user = {};
                 const existedUser = getUser(userName);
                 if (existedUser) {
@@ -72,8 +77,9 @@ const Register = ({handleSubmit, handlePageChange}) => {
                 <TextField required label="Enter your name" value={userName} onChange={(e) => {
                     setUserName(e.target.value)
                 }}/>
-                <Button variant="contained" color="primary" type="submit">Register and choose interested
-                    category</Button>
+                <Button variant="contained" color="primary" type="submit">
+                    Enter name and choose category
+                </Button>
             </form>
         </>
     );

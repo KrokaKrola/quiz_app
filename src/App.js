@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Register from "./components/Register";
 import Categories from './components/Categories';
 import Difficulty from "./components/Difficulty";
+import Tester from "./components/Tester";
 
 function App() {
     const [user, setUser] = useState({});
@@ -11,7 +12,8 @@ function App() {
     const RENDER_PART = {
         Register: ({setUser}) => <Register handleSubmit={setUser} handlePageChange={setActivePage}/>,
         Categories: () => <Categories handlePageChange={setActivePage}/>,
-        Difficulty: () => <Difficulty/>
+        Difficulty: () => <Difficulty handlePageChange={setActivePage} />,
+        Tester: () => <Tester />
     };
 
     return (

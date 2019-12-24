@@ -45,14 +45,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   * [x] tiles with the names of category
     * [x] get tiles from state
   * [x] on tile click will send to the second page
-* [ ] second page choose difficulty (eazy, medium, hard, Any difficulty)
-  * [ ] radiobuttons with difficulties
-  * [ ] read from state [id, difficultyName ]
-* [ ] third page choose type of questions (Any type, one correct answer, multiple correct answers)
-  * [ ] radiobuttons with type of questions
-  * [ ] read from state [id, questionType]
-* [ ] generate the url to the [Trivia database](https://opentdb.com/) from the answers
-  * [ ] global url variable
+  * [x] set localStorage value
+* [x] second page choose difficulty (eazy, medium, hard, Any difficulty)
+  * [x] blocks with difficulties
+  * [x] set localStorage value
+* [x] generate the url to the [Trivia database](https://opentdb.com/) from the answers
+  * [x] global url variable
 * [ ] start of the game
   * [ ] get all question from url and generate it
     * [ ] state of current question
@@ -73,6 +71,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * axios
 * read about react router
 * add props checker 
+* add loading animation
 
 ## API request
 https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=boolean - example

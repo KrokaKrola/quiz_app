@@ -9,3 +9,5 @@ export function uniqueId() {
         ).toString(36)
     );
 }
+
+export const baseUrl = 'https://opentdb.com/';
