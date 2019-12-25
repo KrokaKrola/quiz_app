@@ -35,11 +35,47 @@ const setUser = user => {
     localStorage.setItem('users', JSON.stringify(newUsers));
 };
 
-const refreshUserToken = async user => {
-    console.log('token refreshed');
-    user.token = await getUserToken();
-    user.tokenExpireDate = new Date().getTime() + 21600000;
+const refreshUserToken = user => {
+    console.log('refresh token');
+    const users = getUsers();
+    const updatedUsers = users.map(async item => {
+        if(item.id === user.id) {
+            return {
+                ...item,
+                token: await getUserToken(),
+                tokenExpireDate: new Date().getTime() + 21600000
+            }
+        }
+    });
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
 };
+
+const checkTokenExpireDate = async user => {
+    if (new Date().getTime() > user.tokenExpireDate) {
+        await refreshUserToken(user);
+    }
+};
+
+const userChecker = async (name) => {
+    let user;
+    const existedUser = getUser(name);
+    if (existedUser) {
+        user = {
+            ...existedUser
+        };
+        await checkTokenExpireDate(user);
+    } else {
+        user = {
+            id: uniqueId(),
+            name,
+            topScore: 0,
+            token: await getUserToken(),
+            tokenExpireDate: new Date().getTime() + 21600000
+        };
+        setUser(user);
+    }
+    return user;
+}
 
 const Register = ({handleSubmit, handlePageChange}) => {
     const [userName, setUserName] = useState('');
@@ -47,30 +83,9 @@ const Register = ({handleSubmit, handlePageChange}) => {
         <>
             <form className="Register" onSubmit={async (e) => {
                 e.preventDefault();
-                /* TODO:
-                * 1. use https://opentdb.com/api_token.php?command=reset&token=YOURTOKENHERE if user exists
-                * 2. refresh token dont work correctly
-                * 3. refactor code
-                * */
-                let user = {};
-                const existedUser = getUser(userName);
-                if (existedUser) {
-                    user = {
-                        ...existedUser
-                    }
-                } else {
-                    user = {
-                        id: uniqueId(),
-                        name: userName,
-                        topScore: 0,
-                        token: await getUserToken(),
-                        tokenExpireDate: new Date().getTime() + 21600000
-                    };
-                    setUser(user);
-                }
-                if (new Date().getTime() > user.tokenExpireDate) {
-                    await refreshUserToken(user);
-                }
+
+                const user = userChecker(userName);
+
                 handleSubmit(user);
                 handlePageChange('Categories');
             }}>
