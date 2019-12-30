@@ -8,7 +8,7 @@ import Tester from "./components/Tester";
 
 function App() {
     const [user, setUser] = useState({});
-    const [activePage, setActivePage] = useState('Register');
+    const [activePage, setActivePage] = useState('Tester');
     const RENDER_PART = {
         Register: ({setUser}) => <Register handleSubmit={setUser} handlePageChange={setActivePage}/>,
         Categories: () => <Categories handlePageChange={setActivePage}/>,

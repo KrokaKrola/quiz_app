@@ -1,0 +1,28 @@
+.Question {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__category {
+    font-size: 32px;
+    flex-basis: 100%;
+    text-align: center;
+    line-height: 120%;
+  }
+  &__type {
+    font-size: 14px;
+    color: #cacaca;
+    font-style: italic;
+    line-height: 120%;
+    text-align: center;
+    flex-basis: 100%;
+    margin-top: 10px;
+  }
+  p {
+    font-size: 24px;
+    text-align: center;
+    line-height: 120%;
+    display: block;
+    margin: 20px 0;
+    flex-basis: 100%;
+  }
+}
