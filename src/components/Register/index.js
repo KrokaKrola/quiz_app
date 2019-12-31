@@ -68,14 +68,13 @@ const userChecker = async (name) => {
         user = {
             id: uniqueId(),
             name,
-            topScore: 0,
             token: await getUserToken(),
             tokenExpireDate: new Date().getTime() + 21600000
         };
         setUser(user);
     }
     return user;
-}
+};
 
 const Register = ({handleSubmit, handlePageChange}) => {
     const [userName, setUserName] = useState('');
@@ -84,7 +83,7 @@ const Register = ({handleSubmit, handlePageChange}) => {
             <form className="Register" onSubmit={async (e) => {
                 e.preventDefault();
 
-                const user = userChecker(userName);
+                const user = await userChecker(userName);
 
                 handleSubmit(user);
                 handlePageChange('Categories');

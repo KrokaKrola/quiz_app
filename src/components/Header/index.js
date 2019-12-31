@@ -12,7 +12,6 @@ const Header = ({user}) => {
                     </a>
                     <div className="Header__profile">
                         <span className="Header__username">{user.id && user.name}</span>
-                        <span className="Header__score">{user.id && `Top score: ${user.topScore}`}</span>
                     </div>
                 </div>
             </div>

@@ -11,3 +11,9 @@ export function uniqueId() {
 }
 
 export const baseUrl = 'https://opentdb.com/';
+
+export const removeActiveState = () => {
+    document.querySelectorAll('.Answers__item').forEach(item => {
+        item.classList.remove('active');
+    });
+};

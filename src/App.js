@@ -8,12 +8,12 @@ import Tester from "./components/Tester";
 
 function App() {
     const [user, setUser] = useState({});
-    const [activePage, setActivePage] = useState('Tester');
+    const [activePage, setActivePage] = useState('Register');
     const RENDER_PART = {
         Register: ({setUser}) => <Register handleSubmit={setUser} handlePageChange={setActivePage}/>,
         Categories: () => <Categories handlePageChange={setActivePage}/>,
         Difficulty: () => <Difficulty handlePageChange={setActivePage} />,
-        Tester: () => <Tester />
+        Tester: () => <Tester handlePageChange={setActivePage} />
     };
 
     return (

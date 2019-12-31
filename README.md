@@ -51,17 +51,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   * [x] set localStorage value
 * [x] generate the url to the [Trivia database](https://opentdb.com/) from the answers
   * [x] global url variable
-* [ ] start of the game
+* [x] start of the game
   * [x] get all question from url and generate it
   * [x] 10 questions in chosen category
     * [x] show list of questions
     * [x] disabled button if no answer provided to the current question
       * [x] after user choose something enable button
-  * [ ] show the correct answer before loading next
-    * [ ] if user choose the correct answer, then highlight it with green color
-    * [ ] if user choose the wrong answer, highlight wrong answer with red, and the correct answer with green
-  * [ ] time limit of 30 seconds on one question
-    * [ ] if after 30 seconds user didn't answer finish the game
-* [ ] end of the game
-  * [ ] show user total questions and correct answers (7 / 10, 5 / 10, 10 / 10)
-  * [ ] button with redirect to the categories page
+* [x] end of the game
+  * [x] show user total questions and correct answers (7 / 10, 5 / 10, 10 / 10)
+  * [x] button with redirect to the categories page

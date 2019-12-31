@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-
+import {removeActiveState} from './../../../vendor';
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -9,9 +9,7 @@ function shuffle(a) {
 }
 
 const changeActiveState = (e) => {
-    document.querySelectorAll('.Answers__item').forEach(item => {
-        item.classList.remove('active');
-    });
+    removeActiveState();
     e.target.closest('.Answers__item').classList.add('active');
 };
 
@@ -34,3 +32,4 @@ const Answers = ({correctAnswer, incorrectAnswers, setDisabledState}) => {
     )
 };
 export default Answers;
+
